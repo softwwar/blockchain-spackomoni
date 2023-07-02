@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { IconType } from 'react-icons';
 import { BiMessageError, BiTimeFive } from 'react-icons/bi';
 import { BsBoxFill, BsShieldLockFill } from 'react-icons/bs';
@@ -29,13 +30,13 @@ export default function Selection() {
         <br />
         <div className='grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 lg:grid-cols-3'>
           {data.map((_) => (
-            <div
-              key={_.title}
-              className='tracking-wider cursor-pointer bg-[#111f36] p-8 rounded-lg hover:shadow-lg'
-            >
-              {withComp(_.icon)} <p className='my-2 text-white/70'>{_.title}</p>
-              <p className='text-xs opacity-60'>{_.sub}</p>
-            </div>
+            <Link key={_.title} href={'/dapps'} className='block h-full'>
+              <div className='tracking-wider cursor-pointer bg-[#111f36] h-full   p-8 rounded-lg hover:ring-1 '>
+                {withComp(_.icon)}{' '}
+                <p className='my-2 text-white/70'>{_.title}</p>
+                <p className='text-xs opacity-60 line-clamp-2'>{_.sub}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
