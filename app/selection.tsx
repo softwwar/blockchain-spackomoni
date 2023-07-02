@@ -1,18 +1,14 @@
-import { BsBoxFill, BsShieldLockFill } from 'react-icons/bs';
+import { IconType } from 'react-icons';
 import { BiMessageError, BiTimeFive } from 'react-icons/bi';
-import { GrConnect, GrTransaction } from 'react-icons/gr';
-import { PiSwapFill } from 'react-icons/pi';
-import { IoMdLogIn } from 'react-icons/io';
-import { GiConfirmed } from 'react-icons/gi';
-import { FiMoreVertical } from 'react-icons/fi';
-import { TbCoinOff } from 'react-icons/tb';
+import { BsBoxFill, BsShieldLockFill } from 'react-icons/bs';
+import { CgMoreO } from 'react-icons/cg';
 import {
   FaBalanceScaleLeft,
+  FaCubes,
   FaRegListAlt,
   FaUserLock,
   FaWallet,
 } from 'react-icons/fa';
-import { RiNftFill } from 'react-icons/ri';
 import {
   FaArrowTrendUp,
   FaCoins,
@@ -20,7 +16,11 @@ import {
   FaFilterCircleDollar,
   FaMoneyBillTransfer,
 } from 'react-icons/fa6';
-import { IconType } from 'react-icons';
+import { GiConfirmed } from 'react-icons/gi';
+import { IoMdLogIn } from 'react-icons/io';
+import { PiSwapFill } from 'react-icons/pi';
+import { RiNftFill } from 'react-icons/ri';
+import { TbCoinOff, TbTransformFilled } from 'react-icons/tb';
 export default function Selection() {
   return (
     <section>
@@ -31,7 +31,7 @@ export default function Selection() {
           {data.map((_) => (
             <div
               key={_.title}
-              className='tracking-wider bg-[#111f36] p-8 rounded-lg'
+              className='tracking-wider bg-[#111f36] p-8 rounded-lg hover:shadow-lg'
             >
               {withComp(_.icon)} <p className='my-2 text-white/70'>{_.title}</p>
               <p className='text-xs opacity-60'>{_.sub}</p>
@@ -79,7 +79,7 @@ const data = [
     sub: 'Click here for transaction related issues.',
   },
   {
-    icon: GrTransaction,
+    icon: TbTransformFilled,
     title: 'Cross Chain Transfer',
     sub: 'Click here for cross chain bridge issues.',
   },
@@ -99,7 +99,7 @@ const data = [
     sub: 'Click here to claim reflection.',
   },
   {
-    icon: GrConnect,
+    icon: FaCubes,
     title: 'Connect to Dapps',
     sub: 'Click here for error while connecting to Dapps',
   },
@@ -149,7 +149,7 @@ const data = [
     sub: 'To trade crypto your account must be marked as a trusted payment source.',
   },
   {
-    icon: FiMoreVertical,
+    icon: CgMoreO,
     title: 'Other Issues Not Listed',
     sub: "If you can't find the issue you are experiencing click here",
   },
