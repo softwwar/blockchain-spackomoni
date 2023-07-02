@@ -31,7 +31,7 @@ export default function Selection() {
           {data.map((_) => (
             <div
               key={_.title}
-              className='tracking-wider bg-[#111f36] p-8 rounded-lg hover:shadow-lg'
+              className='tracking-wider cursor-pointer bg-[#111f36] p-8 rounded-lg hover:shadow-lg'
             >
               {withComp(_.icon)} <p className='my-2 text-white/70'>{_.title}</p>
               <p className='text-xs opacity-60'>{_.sub}</p>

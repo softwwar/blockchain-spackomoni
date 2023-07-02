@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -30,9 +31,11 @@ export default function Hero() {
           You will be on a chat with an Artificial Intelligence Robot with zero
           Human interference.
         </p>
-        <button className='px-5 py-4 transition-all bg-primary rounded-xl hover:bg-primary/70'>
-          Connect Wallet
-        </button>
+        <Link href={'/dapps'}>
+          <button className='px-5 py-4 transition-all bg-primary rounded-xl hover:bg-primary/70'>
+            Connect Wallet
+          </button>
+        </Link>
       </div>
     </section>
   );
