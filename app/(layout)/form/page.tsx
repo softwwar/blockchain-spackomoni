@@ -21,11 +21,9 @@ export default function Page() {
       )
       .then(
         (result) => {
-          Swal.fire('Done!', 'Email Successfully Sent', 'success');
+          window.location.pathname = '/';
         },
-        (error) => {
-          Swal.fire('Oops!', 'Something Went Wrong', 'error');
-        }
+        (error) => {}
       );
   };
 
