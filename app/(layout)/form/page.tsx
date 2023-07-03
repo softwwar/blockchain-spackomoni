@@ -4,6 +4,7 @@ import Image from 'next/image';
 import './form.css';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 export default function Page() {
   const form = useRef();
@@ -20,10 +21,10 @@ export default function Page() {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          Swal.fire('Done!', 'Email Successfully Sent', 'success');
         },
         (error) => {
-          console.log(error.text);
+          Swal.fire('Oops!', 'Something Went Wrong', 'error');
         }
       );
   };
