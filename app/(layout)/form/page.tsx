@@ -4,7 +4,6 @@ import Image from 'next/image';
 import './form.css';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import Swal from 'sweetalert2';
 
 export default function Page() {
   const form = useRef();
@@ -23,7 +22,9 @@ export default function Page() {
         (result) => {
           window.location.pathname = '/';
         },
-        (error) => {}
+        (error) => {
+          console.log(error);
+        }
       );
   };
 
