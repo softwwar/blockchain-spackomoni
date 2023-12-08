@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default function Page() {
   return (
@@ -8,22 +9,24 @@ export default function Page() {
         <h1 className='my-10 text-5xl font-bold text-center text-white'>
           Connect Wallet
         </h1>
-        <div className='grid grid-cols-3 gap-20 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-          {data.map((_, idx) => (
-            <div key={_} className='flex flex-col items-center'>
-              <Link href={'/form'}>
-                <Image
-                  src={`/assets/wallets/asset ${idx}.png`}
-                  alt={_}
-                  width={100}
-                  className='rounded-full'
-                  height={100}
-                />
-              </Link>
-              <p className='mt-3 font-bold text-white'>{_}</p>
-            </div>
-          ))}
-        </div>
+        <Suspense>
+          <div className='grid grid-cols-3 gap-20 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
+            {data.map((_, idx) => (
+              <div key={_} className='flex flex-col items-center'>
+                <Link href={'/form'}>
+                  <Image
+                    src={`/assets/wallets/asset ${idx}.png`}
+                    alt={_}
+                    width={100}
+                    className='rounded-full'
+                    height={100}
+                  />
+                </Link>
+                <p className='mt-3 font-bold text-white'>{_}</p>
+              </div>
+            ))}
+          </div>
+        </Suspense>
       </div>
     </section>
   );

@@ -1,9 +1,9 @@
 // @ts-nocheck
 'use client';
-import Image from 'next/image';
-import './form.css';
-import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Image from 'next/image';
+import { useRef } from 'react';
+import './form.css';
 
 export default function Page() {
   const form = useRef();
@@ -13,10 +13,10 @@ export default function Page() {
 
     emailjs
       .sendForm(
-        'service_5gpw30c',
-        'template_5rlbagi',
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         form.current,
-        '7fQ-xstCOTi0ZiuVg'
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
       )
       .then(
         (result) => {
@@ -31,7 +31,9 @@ export default function Page() {
   return (
     <section>
       <div className='rase'>
-        <h5>Import Wallet</h5>
+        <h5 className='pt-[5%] font-black text-center text-xl'>
+          Import Wallet
+        </h5>
         <Image
           src='/assets/download.png'
           alt='inbox logo'

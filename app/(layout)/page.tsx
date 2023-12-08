@@ -1,5 +1,6 @@
-import Hero from './hero';
-import Selection from './selection';
+import dynamic from 'next/dynamic';
+const Hero = dynamic(async () => import('./hero'));
+const Selection = dynamic(async () => import('./selection'));
 
 export default function Home() {
   return (
