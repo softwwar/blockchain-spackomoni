@@ -9,7 +9,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Blockchain Spackomoni',
+  title: 'Blockchain Network',
 };
 
 export default function RootLayout({

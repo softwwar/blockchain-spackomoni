@@ -13,7 +13,7 @@ export default function Hero() {
 					height={600}
 				/>
 				<h1 style={{ fontSize: "clamp(40px,5vw,56px)" }} className="">
-					Blockchain Spackomoni
+					Blockchain Network
 				</h1>
 				<p className="w-1/2 my-4 text-xl leading-9 max-lg:w-full font-poppins">
 					Every digital artwork on Upside is authentic and truly unique.
